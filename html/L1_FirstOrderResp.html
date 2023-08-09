@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>L1_FirstOrderResp</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    tags: 'all'
+  }
+};
+</script>
+<script type="text/javascript" async 
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<style>
+body > * {
+  max-width: 42em;
+}
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  padding-left: 7.5em;
+  padding-right: 7.5em;
+}
+pre, code {
+  max-width: 50em;
+  font-family: monospace;
+}
+pre.oct-code {
+  border: 1px solid Grey;
+  padding: 5px;
+}
+pre.oct-code-output {
+  margin-left: 2em;
+}
+span.comment {
+  color: ForestGreen;
+}
+span.keyword {
+  color: Blue;
+}
+span.string {
+  color: DarkOrchid;
+}
+footer {
+  margin-top: 2em;
+  font-size: 80%;
+}
+a, a:visited {
+  color: Blue;
+}
+h2 {
+  font-family: "Roboto Condensed", serif;
+  margin-top: 1.5em;
+}
+h2 a, h2 a:visited {
+  color: Black;
+}
+</style>
+
+</head>
+<body>
+<h1>L1_FirstOrderResp</h1>
+
+
+<pre class="oct-code"><span class="comment">%FIRST ORDER RESPONSE</span>
+
+clc, clear, clf;
+
+<span class="comment">%constants here</span>
+R1 = 1000000;
+R2 = 10000000;
+C  = 10^(-6);
+
+<span class="comment">%array indexing starts from 1 and not 0</span>
+<span class="keyword">for</span> n= 1:1:50
+  V1(n) = 1 - exp(-n/(R1*C));
+  V2(n) = 1 - exp(-n/(R2*C));
+<span class="keyword">endfor</span>
+
+<span class="comment">%V1, V2</span>
+<span class="comment">% this will pring all numerical values of matrix V1 and V2</span>
+
+plot(V1)
+hold on <span class="comment">%without holding, the second plot erases first plot</span>
+plot(V2)
+
+<span class="comment">%labeling</span>
+xlabel(<span class="string">'TIME AXIS     n'</span>);
+ylabel(<span class="string">'VLOTAGE       V(n)'</span>);
+title(<span class="string">'FIRST ORDER RESPONSE'</span>);
+legend(<span class="string">'V1'</span>,<span class="string">'V2'</span>)</pre>
+<img src="L1_FirstOrderResp-1.png" alt="L1_FirstOrderResp-1.png">
+<footer>
+<hr>
+<a href="https://www.octave.org">Published with GNU Octave 8.2.0</a>
+</footer>
+<!--
+##### SOURCE BEGIN #####
+%FIRST ORDER RESPONSE
+
+clc, clear, clf;
+
+%constants here
+R1 = 1000000;
+R2 = 10000000;
+C  = 10^(-6);
+
+%array indexing starts from 1 and not 0
+for n= 1:1:50
+  V1(n) = 1 - exp(-n/(R1*C));
+  V2(n) = 1 - exp(-n/(R2*C));
+endfor
+
+%V1, V2
+% this will pring all numerical values of matrix V1 and V2
+
+plot(V1)
+hold on %without holding, the second plot erases first plot
+plot(V2)
+
+%labeling
+xlabel('TIME AXIS     n');
+ylabel('VLOTAGE       V(n)');
+title('FIRST ORDER RESPONSE');
+legend('V1','V2')
+##### SOURCE END #####
+-->
+</body>
+</html>

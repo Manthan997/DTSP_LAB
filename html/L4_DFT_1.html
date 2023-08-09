@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>L4_DFT_1</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    tags: 'all'
+  }
+};
+</script>
+<script type="text/javascript" async 
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<style>
+body > * {
+  max-width: 42em;
+}
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  padding-left: 7.5em;
+  padding-right: 7.5em;
+}
+pre, code {
+  max-width: 50em;
+  font-family: monospace;
+}
+pre.oct-code {
+  border: 1px solid Grey;
+  padding: 5px;
+}
+pre.oct-code-output {
+  margin-left: 2em;
+}
+span.comment {
+  color: ForestGreen;
+}
+span.keyword {
+  color: Blue;
+}
+span.string {
+  color: DarkOrchid;
+}
+footer {
+  margin-top: 2em;
+  font-size: 80%;
+}
+a, a:visited {
+  color: Blue;
+}
+h2 {
+  font-family: "Roboto Condensed", serif;
+  margin-top: 1.5em;
+}
+h2 a, h2 a:visited {
+  color: Black;
+}
+</style>
+
+</head>
+<body>
+<h1>L4_DFT_1</h1>
+
+
+<pre class="oct-code"><span class="comment">%DFT PROGRAM</span>
+clc,clear,clf
+
+x = [5 0 9 10 11 7 5 6 19 10 11 7 5 6 9 10 11 7 9 17 9 10 11 7 5 6 10 10 11 9 5 6 9 10 11 7 ];
+N = length(x);
+<span class="keyword">for</span> n= 0:1:N-1
+  <span class="keyword">for</span> k= 0:1:N-1
+    W(n+1,k+1 )=exp(-j*2*pi*n*k/N);
+  <span class="keyword">endfor</span>
+ <span class="keyword">endfor</span>
+<span class="comment">% W</span>
+X = W*x<span class="string">'</span>
+
+subplot(2,1,1), stem(x), title(<span class="string">'TIME DOMAIN                              x(n)'</span>)
+
+subplot(2,1,2), stem(abs(X)), title(<span class="string">'MAGNITUDE SPECTRUM                              |X(k)|'</span>)</pre>
+
+<pre class="oct-code-output">X =
+ 
+   310.0000 +        0i
+   -18.4949 -   4.0319i
+    -3.1702 -   4.1867i
+   -24.9545 +  15.2942i
+    16.6040 +   1.8871i
+    -6.0634 +   6.8904i
+   -49.0000 +   3.4641i
+   -19.5572 +  20.5850i
+     4.8990 +   5.2248i
+     5.0000 +  15.0000i
+     6.9213 -  16.4410i
+    -5.3573 +  14.4287i
+   -14.0000 +   1.7321i
+    11.8522 +  18.4605i
+     8.2490 -  12.2542i
+     7.9545 -   0.2942i
+    -9.5030 +   3.3377i
+    13.6205 +  13.6947i
+    20.0000 -   0.0000i
+    13.6205 -  13.6947i
+    -9.5030 -   3.3377i
+     7.9545 +   0.2942i
+     8.2490 +  12.2542i
+    11.8522 -  18.4605i
+   -14.0000 -   1.7321i
+    -5.3573 -  14.4287i
+     6.9213 +  16.4410i
+     5.0000 -  15.0000i
+     4.8990 -   5.2248i
+   -19.5572 -  20.5850i
+   -49.0000 -   3.4641i
+    -6.0634 -   6.8904i
+    16.6040 -   1.8871i
+   -24.9545 -  15.2942i
+    -3.1702 +   4.1867i
+   -18.4949 +   4.0319i
+ 
+</pre>
+<img src="L4_DFT_1-1.png" alt="L4_DFT_1-1.png">
+<footer>
+<hr>
+<a href="https://www.octave.org">Published with GNU Octave 8.2.0</a>
+</footer>
+<!--
+##### SOURCE BEGIN #####
+%DFT PROGRAM
+clc,clear,clf
+
+x = [5 0 9 10 11 7 5 6 19 10 11 7 5 6 9 10 11 7 9 17 9 10 11 7 5 6 10 10 11 9 5 6 9 10 11 7 ];
+N = length(x);
+for n= 0:1:N-1
+  for k= 0:1:N-1
+    W(n+1,k+1 )=exp(-j*2*pi*n*k/N);
+  endfor
+ endfor
+% W
+X = W*x'
+
+subplot(2,1,1), stem(x), title('TIME DOMAIN                              x(n)')
+
+subplot(2,1,2), stem(abs(X)), title('MAGNITUDE SPECTRUM                              |X(k)|')
+##### SOURCE END #####
+-->
+</body>
+</html>
